@@ -48,6 +48,8 @@ export class TsModernProject extends TsProject {
           singleQuote: true,
         },
       },
+      copyrightOwner: 'Johnathan Davis',
+      license: 'MIT',
       packageManager: javascript.NodePackageManager.PNPM,
       tsconfig: ModernOptions,
       tsconfigEslint: {

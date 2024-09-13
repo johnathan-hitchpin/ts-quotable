@@ -34,7 +34,7 @@
     "fast-glob": "^3.3.2"
   },
   "main": "lib/index.js",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
