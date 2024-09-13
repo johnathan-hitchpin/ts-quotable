@@ -19,6 +19,9 @@ export class RootProject extends typescript.TypeScriptProject {
         options.packageManager ?? javascript.NodePackageManager.PNPM,
       projenrcTs: true,
       projenDevDependency: false,
+      buildWorkflowOptions: {
+        mutableBuild: true
+      },
       deps: [
         ...[
           '@prettier/sync',
