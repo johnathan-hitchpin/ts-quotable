@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { quotesOfExec } from './tsqUtils.mts';
+import { quotesOfExec } from './tsqUtils.mjs';
 
 const QuotedSample =
 `import { quoted, quotesOf } from 'ts-quotable';

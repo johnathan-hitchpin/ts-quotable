@@ -4,7 +4,7 @@ import { TsConfigJson } from 'type-fest';
 import path, { join } from 'path';
 import { readFileSync } from 'fs';
 import { toTsCompilerOps } from './optionUtils.mjs';
-import { globSync } from 'fs';
+import { globSync } from 'fast-glob';
 import transformerFactory from './transformer.mjs';
 
 interface Options {

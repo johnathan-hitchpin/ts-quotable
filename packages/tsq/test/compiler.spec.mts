@@ -1,7 +1,8 @@
+// <reference path="./vite-env.d.ts" />
 import compile, { previewCompilation } from '../src/compiler.mjs';
 import { TsConfigJson } from 'type-fest';
 import { describe, test, expect, afterAll } from 'vitest';
-import { mkdirSync, mkdtempSync, rmdirSync, writeFileSync } from 'fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'fs';
 import { resolve, join } from 'path';
 import { globSync } from 'fast-glob';
 
@@ -77,7 +78,7 @@ describe('compiler', () => {
 
   afterAll(() => {
     Array.from(cleanup).forEach((dir) => {
-      rmdirSync(dir, { recursive: true });
+      rmSync(dir, { recursive: true, force: true });
     });
   });
 });

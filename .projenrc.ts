@@ -14,7 +14,7 @@ const root = new RootProject({
 
 new TsModernProject({
   parent: root,
-  outdir: 'projects/tsq',
+  outdir: 'packages/tsq',
   name: 'ts-quotable',
   defaultReleaseBranch: 'main',
   deps: ['fast-glob'],

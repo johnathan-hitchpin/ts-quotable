@@ -18,7 +18,7 @@ export type Quoted<T> = {
     : T[K]
 }
 
-function quotesOf<T>(cls: new (...args) => T): Quoted<T> {
+function quotesOf<T>(cls: new (...args: any[]) => T): Quoted<T> {
   const repo = Reflect.get(cls, Symbol.for('ts-quotable.QuoteRepository')) as Record<string, any>;
   return repo as unknown as Quoted<T>;
 }

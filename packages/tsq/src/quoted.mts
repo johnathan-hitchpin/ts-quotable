@@ -1,4 +1,4 @@
-const quoted: ClassDecorator = function(target: Function) {
+const quoted: ClassDecorator = function(_target: Function) {
 }
 
 Object.defineProperty(quoted, 'saveRepo', {

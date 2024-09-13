@@ -27,10 +27,10 @@ function visitNode(node: ts.Statement): ts.VisitResult<ts.Statement> {
     const cd = node as ts.ClassDeclaration;
     const quotations = extractQuotations(cd);
     const newModifiers: ts.ModifierLike[] =
-      cd.modifiers.filter(m => !(
+      (cd.modifiers?.filter(m => !(
         m.kind === ts.SyntaxKind.Decorator &&
         (m as ts.Decorator).expression.getText() === 'quoted')
-      );
+      ) ?? []);
     const cdNode = ts.factory.updateClassDeclaration(
       cd,
       newModifiers,
@@ -48,7 +48,7 @@ function visitNode(node: ts.Statement): ts.VisitResult<ts.Statement> {
   return node;
 }
 
-const transformerFactory: ts.CustomTransformerFactory = function transformer(context) {
+const transformerFactory: ts.CustomTransformerFactory = function transformer(_context) {
   return {
     transformSourceFile: (sourceFile) => {
       return ts.factory.updateSourceFile(

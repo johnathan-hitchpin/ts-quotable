@@ -1,5 +1,5 @@
 packages:
-  - projects/tsq
+  - packages/tsq
 catalog:
   constructs: 10.3.0
   aws-cdk-lib: 2.150.0

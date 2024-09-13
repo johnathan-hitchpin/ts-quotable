@@ -24,7 +24,7 @@ export const createSegmentsFromDeclaration = (md: ts.MethodDeclaration | ts.Func
   
   let last = 0;
   const bodyVisitor = (n: ts.Node) => {
-    if (n.kind === ts.SyntaxKind.Identifier && n.getText() !== md.name.getText()) {
+    if (n.kind === ts.SyntaxKind.Identifier && n.getText() !== md.name!.getText()) {
       const idStart = n.getStart() - mdStart;
       if (idStart - last > 0) {
         segments.push(mdText.substring(last, idStart));
@@ -74,7 +74,7 @@ export const createTemplate = (segments: Segment[]): ts.TemplateExpression => {
         content = ts.factory.createTemplateMiddle(segment);
       }
       spans.push(ts.factory.createTemplateSpan(
-        id,
+        id!,
         content
       ));
     } else {

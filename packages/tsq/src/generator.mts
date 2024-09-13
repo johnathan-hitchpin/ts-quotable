@@ -17,9 +17,11 @@ export const createQuoteRepoExpression = (
         name,
         ts.factory.createObjectLiteralExpression(
           Object.keys(quotations.get(name)!).map(key => {
+            const q = quotations.get(name)! as unknown as { [i: string]: ts.Expression};
+            
             return ts.factory.createPropertyAssignment(
               key,
-              quotations.get(name)![key]
+              q[key]
             )
           })
         )
@@ -34,14 +36,14 @@ export const createQuoteRepoExpression = (
     ),
     undefined,
     [
-      ts.factory.createIdentifier(cd.name.getText()!),
+      ts.factory.createIdentifier(cd.name!.getText()!),
       objLit
     ]
   );
 }
 
 export const createQuotation = (
-  cd: ts.ClassDeclaration,
+  _cd: ts.ClassDeclaration,
   md: ts.MethodDeclaration,
   segments: Segment[]
 ): ts.Expression => {

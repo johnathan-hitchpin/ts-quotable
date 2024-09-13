@@ -1,5 +1,9 @@
 {
   "name": "@ts-quotable/project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnathan-hitchpin/ts-quotable"
+  },
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
@@ -19,14 +23,13 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@types/node": "^18",
+    "@types/node": "^22",
     "@types/semver": "^7.5.8",
     "commit-and-tag-version": "^12",
     "constructs": "10.3.0",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4",
-    "vitest": "^2.1.0"
+    "typescript": "^5.5.4"
   },
   "peerDependencies": {
     "constructs": "^10.3.0",
@@ -46,6 +49,9 @@
     "yaml": "^2.5.1"
   },
   "pnpm": {},
+  "engines": {
+    "node": ">= 22.7.0"
+  },
   "main": "lib/index.js",
   "license": "MIT",
   "version": "0.0.0",
