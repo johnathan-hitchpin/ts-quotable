@@ -39,7 +39,7 @@ export class RootProject extends typescript.TypeScriptProject {
       repository: 'github.com/johnathan-hitchpin/ts-quotable',
       copyrightOwner: 'Johnathan Davis',
       license: 'MIT',
-      devDeps: [...['vitest', '@types/semver'], ...(options.devDeps ?? [])],
+      devDeps: [...['@types/semver'], ...(options.devDeps ?? [])],
       peerDeps: ['constructs', 'projen'],
       prettier: true,
       prettierOptions: {
@@ -53,7 +53,7 @@ export class RootProject extends typescript.TypeScriptProject {
 
     this.npmrc.addConfig('node-linker', 'isolated');
     this.testTask.reset();
-    this.testTask.exec('vitest run');
+    this.testTask.exec('pnpm run -r test');
     this.package.file.patch(
       JsonPatch.add(
         '/packageManager',

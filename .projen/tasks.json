@@ -175,7 +175,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "vitest run"
+          "exec": "pnpm run -r test"
         }
       ]
     },
@@ -204,13 +204,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/semver,prettier,ts-node,typescript,vitest,constructs,projen,@prettier/sync,aws-cdk-lib,case,fast-glob,semver,tslog,type-fest,yaml"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/semver,prettier,ts-node,typescript,constructs,projen,@prettier/sync,aws-cdk-lib,case,fast-glob,semver,tslog,type-fest,yaml"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @types/node @types/semver commit-and-tag-version prettier ts-node typescript vitest constructs projen @prettier/sync aws-cdk-lib case fast-glob semver tslog type-fest yaml"
+          "exec": "pnpm update @types/node @types/semver commit-and-tag-version prettier ts-node typescript constructs projen @prettier/sync aws-cdk-lib case fast-glob semver tslog type-fest yaml"
         },
         {
           "exec": "npx projen"

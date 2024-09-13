@@ -29,8 +29,7 @@
     "constructs": "10.3.0",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4",
-    "vitest": "^2.1.0"
+    "typescript": "^5.5.4"
   },
   "peerDependencies": {
     "constructs": "^10.3.0",
