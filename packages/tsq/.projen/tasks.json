@@ -97,7 +97,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "vitest run || cat test-reports/*"
+          "exec": "vitest run || cat test-reports/junit.xml"
         },
         {
           "exec": "pnpm dlx istanbul-badges-readme --readmeDir='../../'"
