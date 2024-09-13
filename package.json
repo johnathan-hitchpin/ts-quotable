@@ -23,7 +23,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@types/node": "^18",
+    "@types/node": "^22",
     "@types/semver": "^7.5.8",
     "commit-and-tag-version": "^12",
     "constructs": "10.3.0",
@@ -49,6 +49,9 @@
     "yaml": "^2.5.1"
   },
   "pnpm": {},
+  "engines": {
+    "node": ">= 22.7.0"
+  },
   "main": "lib/index.js",
   "license": "MIT",
   "version": "0.0.0",

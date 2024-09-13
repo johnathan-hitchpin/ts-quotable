@@ -35,6 +35,8 @@ export class RootProject extends typescript.TypeScriptProject {
         ],
         ...(options.deps ?? []),
       ],
+      minNodeVersion: '22.7.0',
+      workflowNodeVersion: '22.7.0',
       eslint: false,
       repository: 'github.com/johnathan-hitchpin/ts-quotable',
       copyrightOwner: 'Johnathan Davis',
