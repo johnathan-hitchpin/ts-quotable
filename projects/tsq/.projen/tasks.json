@@ -100,7 +100,7 @@
           "exec": "vitest run"
         },
         {
-          "exec": "istanbul-badges-readme --readmeDir='../../'"
+          "exec": "pnpm dlx istanbul-badges-readme --readmeDir='../../'"
         }
       ]
     },

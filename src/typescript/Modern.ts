@@ -64,6 +64,6 @@ export class TsModernProject extends TsProject {
     const tt = this.testTask;
     tt.reset();
     tt.exec('vitest run');
-    tt.exec("istanbul-badges-readme --readmeDir='../../'");
+    tt.exec("pnpm dlx istanbul-badges-readme --readmeDir='../../'");
   }
 }
