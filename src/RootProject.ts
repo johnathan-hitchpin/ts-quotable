@@ -20,8 +20,9 @@ export class RootProject extends typescript.TypeScriptProject {
       projenrcTs: true,
       projenDevDependency: false,
       buildWorkflowOptions: {
-        mutableBuild: true
+        mutableBuild: true,
       },
+      
       deps: [
         ...[
           '@prettier/sync',
@@ -41,7 +42,7 @@ export class RootProject extends typescript.TypeScriptProject {
       minNodeVersion: '22.7.0',
       workflowNodeVersion: '22.7.0',
       eslint: false,
-      repository: 'github.com/johnathan-hitchpin/ts-quotable',
+      repository: 'https://github.com/johnathan-hitchpin/ts-quotable',
       copyrightOwner: 'Johnathan Davis',
       license: 'MIT',
       devDeps: [...['@types/semver'], ...(options.devDeps ?? [])],
