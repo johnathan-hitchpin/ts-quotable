@@ -1,5 +1,9 @@
 {
   "name": "@ts-quotable/project",
+  "repository": {
+    "type": "git",
+    "url": "github.com/johnathan-hitchpin/ts-quotable"
+  },
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",

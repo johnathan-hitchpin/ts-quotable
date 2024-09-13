@@ -36,6 +36,7 @@ export class RootProject extends typescript.TypeScriptProject {
         ...(options.deps ?? []),
       ],
       eslint: false,
+      repository: 'github.com/johnathan-hitchpin/ts-quotable',
       copyrightOwner: 'Johnathan Davis',
       license: 'MIT',
       devDeps: [...['vitest', '@types/semver'], ...(options.devDeps ?? [])],
