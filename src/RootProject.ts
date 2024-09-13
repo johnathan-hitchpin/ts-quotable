@@ -35,6 +35,7 @@ export class RootProject extends typescript.TypeScriptProject {
         ],
         ...(options.deps ?? []),
       ],
+      eslint: false,
       devDeps: [...['vitest', '@types/semver'], ...(options.devDeps ?? [])],
       peerDeps: ['constructs', 'projen'],
       prettier: true,

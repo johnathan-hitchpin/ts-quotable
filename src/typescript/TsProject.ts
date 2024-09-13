@@ -14,6 +14,9 @@ import { TsConfig } from './TsConfig';
 import { TsProjenrc } from './TsProjenrc';
 import { TsTypedocDocgen } from './TsTypedocDocgen';
 
+export interface TsProjectOptions extends TypeScriptProjectOptions {
+  tsconfigEslint?: TypescriptConfigOptions;
+}
 /**
  * TypeScript project
  * @pjid typescript
@@ -47,7 +50,7 @@ export class TsProject extends NodeProject {
    */
   public readonly watchTask: Task;
 
-  constructor(options: TypeScriptProjectOptions) {
+  constructor(options: TsProjectOptions) {
     super({
       ...options,
 
@@ -172,8 +175,24 @@ export class TsProject extends NodeProject {
     this.npmignore?.exclude('tsconfig.tsbuildinfo');
 
     if (options.eslint ?? true) {
+      this.tsconfigEslint = new TsConfig(
+        this,
+        mergeTsconfigOptions(
+          {
+            fileName: 'tsconfig.eslint.json',
+            include: [`${this.srcdir}/**/*.ts`],
+            // exclude: ['node_modules'], // TODO: shouldn't we exclude node_modules?
+            compilerOptions: {
+              rootDir: this.srcdir,
+              outDir: this.libdir,
+              ...compilerOptionDefaults,
+            },
+          },
+          options.tsconfigEslint,
+        ),
+      );
       this.eslint = new Eslint(this, {
-        tsconfigPath: `./${this.tsconfig.fileName}`,
+        tsconfigPath: `./${this.tsconfigEslint!.fileName}`,
         dirs: [this.srcdir],
         devdirs: [this.testdir, 'build-tools'],
         fileExtensions: ['.ts', '.tsx'],
@@ -181,7 +200,6 @@ export class TsProject extends NodeProject {
         ...options.eslintOptions,
       });
 
-      this.tsconfigEslint = this.tsconfig;
     }
 
     // when this is a root project

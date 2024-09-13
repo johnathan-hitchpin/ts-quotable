@@ -36,6 +36,7 @@ jspm_packages/
 !/src/
 /lib
 /dist/
+!/tsconfig.eslint.json
 !/.eslintrc.json
-test-reports
+test-reports/
 coverage

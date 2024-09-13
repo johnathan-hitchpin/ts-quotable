@@ -1,6 +1,23 @@
-import { TypeScriptModuleResolution } from 'projen/lib/javascript';
+import { TypescriptConfigOptions, TypeScriptModuleResolution } from 'projen/lib/javascript';
 import { TsProject } from './TsProject';
 import { javascript, JsonPatch, Project } from 'projen';
+
+const ModernOptions: TypescriptConfigOptions = {
+  compilerOptions: {
+    rootDir: '.',
+    outDir: 'dist',
+    module: 'NodeNext',
+    moduleResolution: TypeScriptModuleResolution.NODE_NEXT,
+    target: 'ESNext',
+    declaration: true,
+    declarationDir: 'dist',
+    baseUrl: '',
+    noUnusedLocals: false,
+    lib: ['esnext'],
+  },
+  include: ['bin/tsq.mts', 'src/**/*.mts'],
+  exclude: [],
+};
 
 export interface TsModernProjectOptions {
   name: string;
@@ -32,24 +49,13 @@ export class TsModernProject extends TsProject {
         },
       },
       packageManager: javascript.NodePackageManager.PNPM,
-      tsconfig: {
-        compilerOptions: {
-          rootDir: '.',
-          outDir: 'dist',
-          module: 'NodeNext',
-          moduleResolution: TypeScriptModuleResolution.NODE_NEXT,
-          target: 'ESNext',
-          declaration: true,
-          declarationDir: 'dist',
-          baseUrl: '',
-          noUnusedLocals: false,
-          lib: ['esnext'],
-        },
-        include: ['bin/tsq.mts', 'src/**/*.mts'],
-        exclude: [],
-      },
+      tsconfig: ModernOptions,
+      tsconfigEslint: {
+        ...ModernOptions,
+        include: [...(ModernOptions.include! ?? []), 'vitest.config.mts']
+      }
     });
-    this.gitignore.exclude('test-reports');
+    this.gitignore.exclude('test-reports/');
     this.gitignore.exclude('coverage');
     this.package.file.patch(JsonPatch.add('/type', 'module'));
 
