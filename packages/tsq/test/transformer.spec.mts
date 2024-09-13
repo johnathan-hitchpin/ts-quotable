@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import * as ts from 'typescript';
-import { extractQuotations, visitNode } from '../src/transformer.mjs';
+import { extractQuotations } from '../src/transformer.mjs';
 
 const QuotedSample =
   `
