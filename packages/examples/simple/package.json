@@ -1,0 +1,19 @@
+{
+  "name": "@ts-quotable/simple-example",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsq"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-quotable": "workspace:*"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0"
+  }
+}
