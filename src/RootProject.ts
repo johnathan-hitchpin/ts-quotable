@@ -1,4 +1,5 @@
 import { javascript, JsonPatch, typescript } from 'projen';
+import { PnpmWorkspace } from './pnpm';
 
 export interface RootProjectOptions {
   name: string;
@@ -26,6 +27,7 @@ export class RootProject extends typescript.TypeScriptProject {
           'fast-glob',
           'prettier',
           'projen',
+          'semver',
           'tslog',
           'typescript',
           'type-fest',
@@ -33,7 +35,7 @@ export class RootProject extends typescript.TypeScriptProject {
         ],
         ...(options.deps ?? []),
       ],
-      devDeps: [...['vitest'], ...(options.devDeps ?? [])],
+      devDeps: [...['vitest', '@types/semver'], ...(options.devDeps ?? [])],
       peerDeps: ['constructs', 'projen'],
       prettier: true,
       prettierOptions: {
@@ -56,5 +58,17 @@ export class RootProject extends typescript.TypeScriptProject {
     );
     this.gitignore.exclude('**/.idea');
     this.gitignore.exclude('**/.DS_Store');
+  }
+
+  preSynthesize(): void {
+    new PnpmWorkspace({
+      project: this,
+      pinnedVersions: {
+        constructs: this.versions.constructs,
+        cdk: this.versions.cdk,
+        projen: this.versions.projen,
+        vitest: this.versions.vitest,
+      },
+    });
   }
 }

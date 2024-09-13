@@ -1,15 +1,7 @@
 packages:
-  - packages/examples/sample
-  - packages/tsq
-
-catalogs:
-  building:
-    "publint": "0.2.10"
-    "@arethetypeswrong/cli": "0.15.4"
-    "unbuild": "2.0.0"
-    "typescript": "^5.5.4"
-    "ts-patch": "^3.2.1"
-  testing:
-    "@types/jest": "^29.5.12"
-    "jest": "^29.7.0"
-    "ts-jest": "^29.2.5"
+  - projects/tsq
+catalog:
+  constructs: 10.3.0
+  aws-cdk-lib: 2.150.0
+  projen: 0.85.0
+  vitest: 2.0.5

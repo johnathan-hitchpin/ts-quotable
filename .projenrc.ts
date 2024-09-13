@@ -1,5 +1,4 @@
-import { typescript } from 'projen';
-import { RootProject }  from './src';
+import { RootProject, TsModernProject } from './src';
 
 const versions = {
   cdk: '2.150.0',
@@ -10,22 +9,15 @@ const versions = {
 };
 const root = new RootProject({
   name: '@ts-quotable/project',
-  versions: versions
+  versions: versions,
 });
 
-const tsqProject = new typescript.TypeScriptProject({
+new TsModernProject({
   parent: root,
   outdir: 'projects/tsq',
   name: 'ts-quotable',
   defaultReleaseBranch: 'main',
-  jest: false,
-  prettier: true,
-  prettierOptions: {
-    settings: {
-      singleQuote: true
-    }
-  },
-  devDeps: ['vitest']
+  deps: ['fast-glob'],
 });
-tsqProject.testTask.reset();
-tsqProject.testTask.exec('vitest run');
+
+root.synth();
